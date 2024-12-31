@@ -6,34 +6,34 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "cart")
+@Table(name = "carts")
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private User customer;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = false)
     private boolean purchased;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderDetails> orderDetails;
+    private List<OrderDetail> orderDetails;
 
     // Constructors
     public Cart() {
     }
 
-    public Cart(Date date, User customer, boolean purchased) {
+    public Cart(Date date, User user, boolean purchased) {
         this.date = date;
-        this.customer = customer;
+        this.user = user;
         this.purchased = purchased;
     }
 
@@ -54,12 +54,12 @@ public class Cart {
         this.date = date;
     }
 
-    public User getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(User customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isPurchased() {
@@ -70,14 +70,11 @@ public class Cart {
         this.purchased = purchased;
     }
 
-    public List<OrderDetails> getOrderDetails() {
+    public List<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
 
-    public void setOrderDetails(List<OrderDetails> orderDetails) {
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
-}
- {
-    
 }
