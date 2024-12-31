@@ -23,12 +23,18 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+
     	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
 
         <!-- Core Spring Boot Starter -->
         <dependency>
